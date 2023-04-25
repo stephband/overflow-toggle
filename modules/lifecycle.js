@@ -60,13 +60,16 @@ export default {
         const { button, slot } = view;
         const style = getComputedStyle(this);
         const maxHeight = px(view.maxHeight || style['max-height'] || 0);
+        const cs = getComputedStyle(slot);
+        const mt = px(cs['margin-top']);
+        const mb = px(cs['margin-bottom']);
 
         // maxHeight is cached on view when element is open
-        var state = update(shadow, button, slot.scrollHeight, maxHeight, slot, false);
+        var state = update(shadow, button, slot.scrollHeight, maxHeight + mt + mb, slot, false);
         events('resize', window)
         .each((e) => {
             const maxHeight = px(view.maxHeight || style['max-height'] || 0);
-            state = update(shadow, button, slot.scrollHeight, maxHeight, slot, state)
+            state = update(shadow, button, slot.scrollHeight, maxHeight  + mt + mb, slot, state)
         });
     }
 };

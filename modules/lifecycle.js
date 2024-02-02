@@ -25,6 +25,8 @@ function update(shadow, button, scrollHeight, maxHeight, slot, state) {
 }
 
 export default {
+    mode: 'closed',
+
     /*
     Create a DOM of the form:
     <link rel="stylesheet" href="/source/bolt/elements/overflow-toggle.shadow.css" />
